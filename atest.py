@@ -55,11 +55,20 @@ def load_key(filename):
 
 
 def encrypt_file(input_file, public_key):
+    """
+     Generate encrypted data 
+   
+    Args:
+        input_file (string): Path of the file
+        public_key (_RSAPublicKey object): object from loaded_public_key
+        
+    Return:
+          bytes :encrypted data of input file
+     
+    """
   
-    chunk_size = 190 #bytes Adjust the chunk size as per your requirement
-    
-
-    encrypted_file=open("encrypted_content","ab")
+    chunk_size = 245 #bytes 
+    final_chunk=b""
     
     with open(input_file,"rb") as file:
          while True:
@@ -67,13 +76,11 @@ def encrypt_file(input_file, public_key):
             if(len(chunk)==0):
                break
             encrypted_chunk=public_key.encrypt(
-                          chunk,padding.OAEP(
-                          mgf=padding.MGF1(algorithm=hashes.SHA256()),
-                          algorithm=hashes.SHA256(),
-                           label=None))
-            encrypted_file.write(encrypted_chunk)
-         
-    
+                          chunk,padding.PKCS1v15())
+            final_chunk+=encrypted_chunk
+            
+    encrypted_file=open("encrypted_content","ab")      
+    encrypted_file.write(final_chunk)
     encrypted_file.close()
     file.close()
     
@@ -82,15 +89,8 @@ def encrypt_file(input_file, public_key):
 def decrypt_file(encrypted_file,private_key):
     
     chunk_size=256
-    
-    
-    decrypted_file=open("a9hhh9.png","ab")
-    
-    
-        
-     
-    
-    
+    final_chunk=b""
+  
     with open(encrypted_file,"rb") as encrypted_file:
        while True:
          chunk = encrypted_file.read(chunk_size)
@@ -99,12 +99,13 @@ def decrypt_file(encrypted_file,private_key):
          else:
             decrypted_chunk = private_key.decrypt(
                               chunk,
-                              padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),
-                        algorithm=hashes.SHA256(),
-                     label=None)
+                              padding.PKCS1v15()
                                 )
-            decrypted_file.write(decrypted_chunk)
+            final_chunk+=decrypted_chunk
+            
     
+    decrypted_file=open("a9hhh9.png","ab")
+    decrypted_file.write(final_chunk)
     encrypted_file.close()
     decrypted_file.close()
 
@@ -117,7 +118,7 @@ def decrypt_file(encrypted_file,private_key):
 # Load the keys from files
 loaded_private_key = load_key('private_key.pem')
 loaded_public_key =  load_key('public_key.pem')
-
+print(loaded_public_key)
 # Encrypt and decrypt a file
 input_file = "006.jpg"
 encrypted_file = 'encrypted.txt'
