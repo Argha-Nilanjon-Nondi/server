@@ -105,26 +105,26 @@ def decrypt_file(bytes_data,private_key):
 #save_key_to_file(public_key, 'public_key.pem')
 
 # Load the keys from files
-loaded_private_key = load_key('private_key.pem')
-loaded_public_key =  load_key('public_key.pem')
+#loaded_private_key = load_key('private_key.pem')
+#loaded_public_key =  load_key('public_key.pem')
 
 
 # Encrypt and decrypt a file
-input_filename = "006.jpg"
-encrypted_filename = 'encrypted.bin'
-decrypted_filename = 'shshsh.jpg'
+#input_filename = "006.jpg"
+#encrypted_filename = 'encrypted.bin'
+#decrypted_filename = 'shshsh.jpg'
 
-input_file=open(input_filename,"rb")
-input_content=input_file.read()
-encrypted_file=open(encrypted_filename,"wb")
-decrypted_file=open(decrypted_filename,"wb")
+#input_file=open(input_filename,"rb")
+#input_content=input_file.read()
+#encrypted_file=open(encrypted_filename,"wb")
+#decrypted_file=open(decrypted_filename,"wb")
 
-encrypted_content=encrypt_file(input_content, loaded_public_key)
-encrypted_file.write(encrypted_content)
+#encrypted_content=encrypt_file(input_content, loaded_public_key)
+#encrypted_file.write(encrypted_content)
 
-decrypted_content=decrypt_file(encrypted_content,loaded_private_key)
-decrypted_file.write(decrypted_content)
+#decrypted_content=decrypt_file(encrypted_content,loaded_private_key)
+#decrypted_file.write(decrypted_content)
 
-input_file.close()
-encrypted_file.close()
-decrypted_file.close()
+#input_file.close()
+#encrypted_file.close()
+#decrypted_file.close()
