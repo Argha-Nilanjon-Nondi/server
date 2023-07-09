@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from lib.cryptographic import load_key,encrypt_file,decrypt_file
+from lib.cryptographic import load_key,decrypt_file
 import base64
 import json
 
