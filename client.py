@@ -3,7 +3,7 @@ import json
 from lib.cryptographic import load_key,encrypt_file
 import base64
 
-input_filename="006.jpg"
+input_filename="test_my.wav"
 loaded_public_key =  load_key('public_key.pem')
 input_file=open(input_filename,"rb")
 input_content=input_file.read()
