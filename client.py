@@ -5,17 +5,21 @@ import base64
 
 input_filename="test_my.wav"
 loaded_public_key =  load_key('public_key.pem')
+print("Key is loaded")
 input_file=open(input_filename,"rb")
 input_content=input_file.read()
 input_file.close()
+print("File is readed")
 
 encrypted_content=encrypt_file(input_content, loaded_public_key)
+print("Content is encrypted")
 encoded_data = base64.b64encode(encrypted_content).decode()
+print("Content is encoded")
 
 
-url = 'http://127.0.0.1:5000/api/upload'  # Replace with the actual URL of the server endpoint
+url = 'https://many-ways-dream.loca.lt/api/upload'  # Replace with the actual URL of the server endpoint
 data = {
-    'file_name': 'rhdhdh.jpg',
+    'file_name': input_filename,
     'file_content': encoded_data
 }
 

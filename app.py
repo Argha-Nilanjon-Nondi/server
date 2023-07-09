@@ -15,9 +15,9 @@ import random
 
 
 def remove_all_noise(filename):
-    model = pretrained.dns64().cuda()
+    model = pretrained.dns64().cpu()
     wav, sr = torchaudio.load(filename)
-    wav = convert_audio(wav.cuda(), sr, model.sample_rate, model.chin)
+    wav = convert_audio(wav.cpu(), sr, model.sample_rate, model.chin)
     with torch.no_grad():
          denoised = model(wav[None])[0]
          data=denoised.data.cpu().numpy()
