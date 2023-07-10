@@ -2,6 +2,8 @@ import requests
 import json
 from lib.cryptographic import load_key,encrypt_file
 import base64
+import urllib.parse
+
 
 input_filename="test_my.wav"
 loaded_public_key =  load_key('public_key.pem')
@@ -16,8 +18,9 @@ print("Content is encrypted")
 encoded_data = base64.b64encode(encrypted_content).decode()
 print("Content is encoded")
 
-
-url = 'https://odd-turkeys-sniff.loca.lt/api/upload'  # Replace with the actual URL of the server endpoint
+main_url="https://moody-forks-jam.loca.lt/"
+path_url="/api/upload"
+url = urllib.parse.urljoin(main_url,path_url)  # Replace with the actual URL of the server endpoint
 data = {
     'file_name': input_filename,
     'file_content': encoded_data
