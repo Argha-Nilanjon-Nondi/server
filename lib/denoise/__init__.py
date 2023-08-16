@@ -7,6 +7,7 @@ from scipy.io import wavfile
 import numpy as np
 import random
 from utility import filename_generator
+import os
 
 def remove_all_noise(filename):
     model = pretrained.dns64().cpu()
@@ -17,5 +18,6 @@ def remove_all_noise(filename):
          data=denoised.data.cpu().numpy()
          data=np.squeeze(data)
          new_filename=filename_generator(filename,text="denoised")
+         saved_path=os.path.join(os.getcwd(),"denoised_audio",new_filename)
          wavfile.write(new_filename,model.sample_rate,data)
-         return new_filename
+         return saved_path

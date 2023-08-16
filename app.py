@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_file
 from lib.cryptographic import load_key,decrypt_file
 from lib.denoise import remove_all_noise
 
@@ -21,9 +21,9 @@ def upload():
   decrypted_file.write(decrypted_content)
   decrypted_file.close()
   
-  remove_all_noise(file_name)
+  new_filepath=remove_all_noise(file_name)
   
-  return "lol"
+  return send_file(new_filepath,as_attachment=False)
 
 if __name__ == '__main__':
     app.run(debug=True)
