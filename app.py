@@ -17,7 +17,7 @@ def upload():
   encrypted_content=base64.b64decode(file_content.encode())
   decrypted_filepath=os.path.join(os.getcwd(),"audio","decrypted",file_name)
   decrypted_content=decrypt_file(encrypted_content,loaded_private_key)
-  
+  print("decrypted",decrypted_filepath)
   
   decrypted_file=open(decrypted_filepath,"wb")
   decrypted_file.write(decrypted_content)
@@ -26,6 +26,8 @@ def upload():
   new_filepath=remove_all_noise(decrypted_filepath)
   
   #os.remove(decrypted_filepath)
+  
+  print("denoised",new_filepath)
   
   return send_file(new_filepath,as_attachment=False)
 
