@@ -25,7 +25,7 @@ def upload():
   
   new_filepath=remove_all_noise(decrypted_filepath)
   
-  os.remove(decrypted_filepath)
+  #os.remove(decrypted_filepath)
   
   return send_file(new_filepath,as_attachment=False)
 
