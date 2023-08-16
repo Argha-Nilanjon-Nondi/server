@@ -15,7 +15,7 @@ def upload():
   file_content=request_data["file_content"]
   
   encrypted_content=base64.b64decode(file_content.encode())
-  decrypted_filepath=saved_path=os.path.join(os.getcwd(),"audio","decrypted",file_name)
+  decrypted_filepath=os.path.join(os.getcwd(),"audio","decrypted",file_name)
   decrypted_content=decrypt_file(encrypted_content,loaded_private_key)
   
   
