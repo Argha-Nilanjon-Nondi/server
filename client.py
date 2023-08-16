@@ -5,7 +5,7 @@ import base64
 import urllib.parse
 
 
-input_filename="test_my.wav"
+input_filename="test_beliver_song.mp3"
 loaded_public_key =  load_key('public_key.pem')
 print("Key is loaded")
 input_file=open(input_filename,"rb")
@@ -18,7 +18,7 @@ print("Content is encrypted")
 encoded_data = base64.b64encode(encrypted_content).decode()
 print("Content is encoded")
 
-main_url="https://moody-forks-jam.loca.lt/"
+main_url="https://large-years-lick.loca.lt//"
 path_url="/api/upload"
 url = urllib.parse.urljoin(main_url,path_url)  # Replace with the actual URL of the server endpoint
 data = {
