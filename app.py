@@ -23,7 +23,7 @@ def upload():
   decrypted_file.write(decrypted_content)
   decrypted_file.close()
   
-  new_filepath=remove_all_noise(file_name)
+  new_filepath=remove_all_noise(decrypted_filepath)
   
   os.remove(decrypted_filepath)
   
